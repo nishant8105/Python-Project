@@ -1,13 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
-@app.route("/")
+@app.route("/",methods=['GET', 'POST'])
 def calculator ():
-    return render_template('index.html')
+    result = None
+    if request.method == 'POST':
+        num1 = float(request.form['num1'])
+        num2 = float(request.form['num2'])
+        operator = request.form['operation']
 
-@app.route("/about")
-def about():
-    return "On about page"
-
-@app.route("/contact")
-def contact():
-    return "on contact page"
+        if operator == '+':
+            result = num1 + num2
+        elif operator == '-':
+            result = num1 - num2
+        elif operator == '*':
+            result = num1 * num2
+        elif operator == '/':
+            result = num1 / num2
+    return render_template("index.html", result = result)
