@@ -4,41 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="/Calculator/static/style.css" />
+    <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
     <div class="container">
-        <div class="display"></div>
-      <div class="row">
-        <button class="btn">C</button>
-        <button class="btn">()</button>
-        <button class="btn">%</button>
-        <button class="btn">/</button>
-      </div>
-      <div class="row">
-        <button class="btn">7</button>
-        <button class="btn">8</button>
-        <button class="btn">9</button>
-        <button class="btn">*</button>
-      </div>
-      <div class="row">
-        <button class="btn">4</button>
-        <button class="btn">5</button>
-        <button class="btn">6</button>
-        <button class="btn">-</button>
-      </div>
-      <div class="row">
-        <button class="btn">1</button>
-        <button class="btn">2</button>
-        <button class="btn">3</button>
-        <button class="btn">+</button>
-      </div>
-      <div class="row">
-       <button class="btn">+/- </button>
-        <button class="btn">0</button>
-        <button class="btn">.</button>
-        <button class="btn">=</button>
-      </div>
+        <h2>Calculator</h2>
+        <form method="post">
+          <input type="number" name="num1" step="any" required placeholder="Number 1">
+          <select name="operation" required>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+          </select>
+          <input type="number" name="num2" step="any" required placeholder="Number 2">
+          <button type="submit">Claculate</button>
+        </form>
+        {% if result is not none %}
+        <h3>Result : {{ result }}</h3>
+        {% endif %}
     </div>
   </body>
 </html>
